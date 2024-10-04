@@ -1,0 +1,489 @@
+// Variables
+@import './button.scss';
+
+$primary-color: #3498db;
+$primary-color-hover: #2980b9;
+$primary-color-active: #1d6fa5;
+$danger-color: #e74c3c;
+$danger-color-hover: #c0392b;
+$background-color-light: #f9f9f9;
+$text-color-dark: #333;
+$text-color-light: #fff;
+$border-color: #ddd;
+$box-shadow: 0 4px 10px rgba(0, 0, 0, 0.129);
+$border-radius: 0.5rem;
+$transition: 0.3s ease;
+$font-family: Arial, sans-serif; // Définir la police commune
+$title-font-size: 1.2rem; // Taille de police pour les titres
+
+// Styles principaux
+.cartContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: $font-family;
+  background-color: #f3f4f6;
+
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: $text-color-dark;
+    text-align: center;
+  }
+
+  .cartItemContainer {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .total {
+    font-size: 1.5rem;
+    margin-top: 20px;
+    font-weight: bold;
+    text-align: right;
+    color: $text-color-dark;
+
+    padding: 24px;
+    border-radius: 0.5rem;
+    background-color: white;
+    box-shadow:
+      0 4px 6px -1px rgb(0 0 0 / 0.1),
+      0 2px 4px -2px rgb(0 0 0 / 0.1);
+    max-height: 199px;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+    width: 65%;
+  }
+
+  li {
+    display: flex;
+    align-items: center;
+    border-radius: 0.5rem;
+    height: 155px;
+    padding: 24px;
+    background-color: white;
+    transition: background-color $transition;
+    box-shadow:
+      0 4px 6px -1px rgb(0 0 0 / 0.1),
+      0 2px 4px -2px rgb(0 0 0 / 0.1);
+    margin-bottom: 34px;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    img {
+      width: 160px;
+      height: 106px;
+      margin-right: 20px;
+      border-radius: $border-radius;
+      box-shadow: $box-shadow;
+      object-fit: cover;
+    }
+  }
+
+  .productDetails {
+    display: flex;
+
+    h3 {
+      font-size: 1.3rem;
+      margin: 0;
+      color: $text-color-dark;
+    }
+
+    p {
+      margin: 5px 0;
+      font-size: 0.9rem;
+      color: $text-color-light;
+    }
+  }
+
+  .priceQuantity {
+    .priceInfo {
+      display: flex;
+      flex-direction: column;
+      margin-top: 20px;
+
+      span {
+        font-size: 1rem;
+        color: $text-color-dark;
+        margin-bottom: 5px;
+
+        &:last-child {
+          font-weight: bold;
+          margin-top: 8px;
+        }
+      }
+    }
+  }
+
+  .quantityButtons {
+    display: flex;
+    align-items: center;
+
+    .decrement,
+    .increment {
+      cursor: pointer;
+      background-color: #f3f4f6;
+      padding: 0.25rem 0.875rem;
+      border-radius: 0.25rem;
+      transition:
+        background-color 0.1s ease,
+        color 0.1s ease;
+      border-color: #e5e7eb;
+
+      &:hover {
+        background-color: #3b82f6;
+        color: #f0f9ff;
+      }
+    }
+
+    .decrement {
+      border-top-left-radius: 0.25rem;
+      border-bottom-left-radius: 0.25rem;
+    }
+
+    .increment {
+      border-top-right-radius: 0.25rem;
+      border-bottom-right-radius: 0.25rem;
+    }
+
+    span {
+      height: 1.5rem;
+      width: 2rem;
+      border: 1px solid #d1d5db;
+      background-color: #ffffff;
+      text-align: center;
+      font-size: 0.75rem;
+      outline: none;
+      border-color: #e5e7eb;
+    }
+  }
+
+  .removeProduct {
+    background-color: $danger-color;
+    color: $text-color-light;
+    border: none;
+    padding: 10px 15px;
+    border-radius: $border-radius;
+    cursor: pointer;
+    transition:
+      background-color $transition,
+      transform 0.2s ease;
+    margin-top: 15px;
+    font-size: 0.9rem;
+
+    &:hover {
+      background-color: $danger-color-hover;
+      transform: scale(1.05);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+
+  .underlineTitle {
+    font-family: $font-family;
+    font-size: $title-font-size;
+    font-weight: bold;
+    text-decoration: underline;
+    color: $text-color-dark;
+    margin-bottom: 15px;
+  }
+}
+
+.emptyCartMessage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  margin: 20px;
+  padding: 20px;
+  border: 2px dashed $border-color;
+  border-radius: 10px;
+  background-color: $background-color-light;
+
+  p {
+    font-size: 1.2rem;
+    color: $text-color-dark;
+    margin: 10px 0;
+  }
+
+  svg {
+    color: $primary-color;
+  }
+}
+
+.actionContainer {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.datePickerContainer {
+  font-size: 1.5rem;
+  margin-top: 20px;
+  font-weight: bold;
+  text-align: right;
+  color: $text-color-dark;
+
+  padding: 24px;
+  border-radius: 0.5rem;
+  background-color: white;
+  box-shadow:
+    0 4px 6px -1px rgb(0 0 0 / 0.1),
+    0 2px 4px -2px rgb(0 0 0 / 0.1);
+  max-height: 199px;
+  width: 20%;
+
+  .dateTitle {
+    font-size: $title-font-size;
+    margin: 0 0 15px;
+    color: $text-color-dark;
+  }
+
+  .dateSelect {
+    width: calc(100% - 20px); // Ajuster la largeur en fonction du padding
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid $border-color;
+    border-radius: $border-radius;
+    box-shadow: $box-shadow;
+    transition: border-color $transition;
+    margin-top: 10px;
+
+    &:focus {
+      border-color: $primary-color;
+      outline: none;
+    }
+  }
+
+  .errorMessage {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid $danger-color;
+    border-radius: $border-radius;
+    background-color: #f8d7da;
+    color: $danger-color;
+    font-size: 0.9rem;
+    text-align: center;
+  }
+}
+
+.customerInfo {
+  width: 100%;
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
+
+  box-shadow: $box-shadow;
+  text-align: center;
+
+  h3 {
+    font-size: $title-font-size;
+    color: $text-color-dark;
+    text-decoration: underline;
+    margin-bottom: 15px;
+  }
+
+  input {
+    display: flex;
+    flex-direction: column;
+    box-shadow: inset 0 0.0625em 0.125em hsla(0, 0%, 4%, 0.05);
+    border-radius: 290486px;
+    width: 245px;
+    height: 55px;
+    font-size: 18px;
+    margin-bottom: 10px;
+
+    &:focus {
+      border-color: $primary-color;
+      outline: none;
+    }
+  }
+
+  .firstInfo {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .firstInfoName,
+  .firstInfoEmail,
+  .InfoText {
+    input {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+
+    span {
+      text-align: left;
+      font-weight: bold;
+      font-size: 18px;
+    }
+  }
+
+  .InfoText input {
+    width: 100% !important;
+  }
+}
+
+.paymentButton {
+  @include button-styles;
+  margin-top: 50px;
+}
+
+@media (max-width: 768px) {
+  .cartItemContainer {
+    flex-direction: column;
+
+    ul {
+      justify-content: center;
+      margin: auto;
+    }
+
+    ul li {
+      flex-direction: column;
+      height: auto;
+      margin: auto;
+      margin-bottom: 30px;
+
+      img {
+        height: 219px;
+        width: 80%;
+        margin-bottom: 35px;
+      }
+
+      .productDetails {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    .productDetails .productDetailsContent {
+      text-align: left;
+
+      h3 {
+        font-size: 18px;
+        width: 78%;
+      }
+    }
+
+    .productDetails .productDetailsPrice .priceQuantity .quantityButtons {
+      justify-content: center;
+      margin: auto;
+    }
+  }
+
+  .datePickerContainer {
+    width: 50%;
+    margin: auto;
+    text-align: center;
+  }
+
+  .actionContainer {
+    flex-direction: column-reverse;
+  }
+
+  .actionContainer .customerInfo {
+    .InfoText {
+      width: 90% !important;
+      margin: auto;
+    }
+  }
+
+  .actionContainer .customerInfo .firstInfo {
+    flex-direction: column;
+
+    input {
+      width: 90% !important;
+      margin: auto;
+      margin-top: 10px;
+      margin-bottom: 30px;
+    }
+  }
+
+  .paymentButton {
+    margin-top: 30px;
+  }
+}
+
+// Styles responsifs pour les tablettes et mobiles
+
+@media (max-width: 480px) {
+  .cartContainer {
+    ul {
+      justify-content: center;
+      margin: auto;
+    }
+
+    ul li {
+      padding: 12px;
+
+      img {
+        width: 100%;
+        margin: auto;
+        margin-bottom: 35px;
+      }
+
+      .productDetails {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    .productDetails .productDetailsContent {
+      text-align: center;
+
+      h3 {
+        font-size: 16px;
+        width: 78%;
+        margin: auto;
+        text-align: center;
+      }
+    }
+
+    .productDetails .productDetailsPrice .priceQuantity .quantityButtons {
+      justify-content: center;
+      margin: auto;
+    }
+  }
+
+  .datePickerContainer {
+    width: 50%;
+    margin: auto;
+    text-align: center;
+  }
+
+  .customerInfo {
+    width: 100%;
+    margin: 40px auto; // Centre le container horizontalement
+    padding: 10px;
+    max-width: 100%;
+  }
+
+  .dateTitle {
+    font-size: 1rem;
+    margin: 0 0 10px;
+  }
+
+  .dateSelect,
+  .customerInfo input {
+    font-size: 0.8rem;
+  }
+
+  .errorMessage {
+    font-size: 0.8rem;
+  }
+
+  .paymentButton {
+    font-size: 0.8rem;
+    margin-top: 30px;
+    width: 50%;
+  }
+}

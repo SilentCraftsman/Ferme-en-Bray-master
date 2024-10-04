@@ -1,0 +1,159 @@
+// styles/Header.scss
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+// Variables (définies ici pour personnaliser facilement les couleurs, tailles et espacements)
+$header-bg-color: #333;
+$header-text-color: white;
+$nav-list-gap: 15px;
+$nav-link-bg-color: #333;
+$nav-link-hover-bg-color: #ed8936;
+$nav-link-hover-color: #ddd;
+$cart-icon-bg-color: red;
+$cart-icon-text-color: white;
+$cart-icon-border-color: white;
+$cart-icon-font-size: 12px;
+
+// Style principal du header
+.header {
+  background-color: $header-bg-color;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-family: 'Playfair Display', serif;
+  .header-title {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    word-wrap: break-word;
+    background: linear-gradient(90deg, blue, white, red);
+    font-style: italic;
+    background-clip: text;
+    -webkit-text-fill-color: transparent; // rend le texte transparent pour afficher le dégradé
+  }
+
+  nav {
+    width: 100%;
+  }
+
+  .nav-button {
+    display: none;
+  }
+
+  .nav-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: $nav-list-gap;
+    flex-wrap: wrap; // Permet aux éléments de passer à la ligne si nécessaire
+
+    li {
+      display: inline-block;
+      position: relative;
+
+      a {
+        text-decoration: none;
+        color: $header-text-color;
+        display: flex;
+        align-items: center;
+        position: relative;
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+        background-color: $nav-link-bg-color;
+
+        &:hover {
+          background-color: $nav-link-hover-bg-color;
+          color: $nav-link-hover-color;
+        }
+
+        svg {
+          margin-right: 8px;
+        }
+      }
+    }
+  }
+
+  .cart-icon-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    .cart-item-count {
+      position: absolute;
+      top: -24px;
+      right: -60px;
+      background-color: $cart-icon-bg-color;
+      color: $cart-icon-text-color;
+      border-radius: 50%;
+      padding: 5px 10px;
+      font-size: $cart-icon-font-size;
+      font-weight: bold;
+      border: 2px solid $cart-icon-border-color;
+    }
+  }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .nav-button {
+    display: flex !important;
+    align-items: center !important;
+    margin: auto;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid white;
+    border-radius: 0.25rem;
+    color: white;
+    transition:
+      color 0.3s,
+      border-color 0.3s;
+
+    &:hover {
+      color: white;
+      border-color: white;
+    }
+
+    .icon {
+      fill: currentColor;
+      height: 1.5rem; // equivalent to h-6 in Tailwind
+      width: 1.5rem; // equivalent to w-6 in Tailwind
+      color: #4a5568; // equivalent to text-gray-700 in Tailwind
+    }
+  }
+
+  .nav-list {
+    display: none !important; // Cacher le menu par défaut
+    flex-direction: column;
+    gap: 10px;
+    max-height: 0px;
+
+    &.open {
+      display: flex !important; // Afficher le menu si la classe "open" est présente
+      max-height: 330px;
+      align-items: center;
+      transition: 4s ease-out !important;
+    }
+  }
+
+  .nav-item {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-title {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .nav-list {
+    gap: 5px;
+    grid-template-columns: repeat(
+      2,
+      1fr
+    ); // Toujours deux colonnes pour les écrans les plus petits
+  }
+}

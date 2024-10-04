@@ -1,0 +1,38 @@
+name: 🚀 Deploy
+
+on:
+  workflow_dispatch:
+    inputs:
+      frontend:
+        type: boolean
+        required: false
+        default: false
+        description: Deploy frontend
+      backend:
+        type: boolean
+        required: false
+        default: false
+        description: Deploy backend
+
+jobs:
+  deploy-backend:
+    name: 🛠️ Deploy Backend
+    if: ${{ github.event.inputs.backend == 'true' }}
+    uses: ./.github/workflows/deploy-common.yml
+    secrets: inherit
+    with:
+      service: 'backend'
+      deploy_path: ${{ vars.DEPLOY_BACKEND_PATH }}
+      source_env_path: ${{ vars.SOURCE_ENV_BACKEND_PATH }}
+      is_frontend: false
+
+  deploy-frontend:
+    name: 🌐 Deploy Frontend
+    if: ${{ github.event.inputs.frontend == 'true' }}
+    uses: ./.github/workflows/deploy-common.yml
+    secrets: inherit
+    with:
+      service: 'frontend'
+      deploy_path: ${{ vars.DEPLOY_FRONTEND_PATH }}
+      source_env_path: ${{ vars.SOURCE_ENV_FRONTEND_PATH }}
+      is_frontend: true
