@@ -34,7 +34,7 @@ $image-height: 200px;
   background-color: #fff;
   border-radius: 15px;
   padding: 24px;
-
+  margin-right: 40px;
   height: 480px;
   position: relative;
   transition: 0.15s ease-in;
@@ -43,8 +43,8 @@ $image-height: 200px;
 
   &:hover {
     box-shadow:
-      0 0 0 2px #ff5c5c,
-      0 10px 60px 0 rgba(#000, 0.1);
+            0 0 0 2px #ff5c5c,
+            0 10px 60px 0 rgba(#000, 0.1);
     transform: translatey(-5px);
   }
   .product-image-container {
@@ -145,13 +145,18 @@ $image-height: 200px;
     }
   }
 
-  .card-action .button-info {
+  .card-action .button-info-container {
+    width: 100%;
+    height: 100%;
+    margin-top: 10px;
+    margin-bottom: 0;
+  }
+
+  .card-action .button-info-container .button-info {
     cursor: pointer;
     border: none;
     width: 95%;
     height: 46px;
-    margin-top: 10px;
-    margin-bottom: 0;
     padding: 0;
     color: #fff;
     background-color: #f1425d;
@@ -160,6 +165,11 @@ $image-height: 200px;
     transition: all 0.3s;
     &:hover {
       background-color: #0d2660;
+    }
+
+    a {
+      text-decoration: none;
+      color: #fff;
     }
   }
 
@@ -174,7 +184,7 @@ $image-height: 200px;
   .product-card {
     padding: 18px;
     max-width: 190px;
-    margin: 5px;
+  
 
     .product-image-container .product-image {
       height: 80%;
