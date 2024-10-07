@@ -10,6 +10,7 @@ import { FaArrowUp } from 'react-icons/fa';
 import RMCarousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import products from '@/config/products.json';
+// import products from '../../public/products.json';
 
 const Carousel = RMCarousel.default ? RMCarousel.default : RMCarousel;
 const { specialtyProducts, outdoorPoultryProducts, holidayProducts } = products;
@@ -24,27 +25,27 @@ const MainContent = () => {
     desktop: {
       breakpoint: {
         max: 3000,
-        min: 1024
+        min: 1024,
       },
       items: 3,
-      partialVisibilityGutter: 40
+      partialVisibilityGutter: 40,
     },
     mobile: {
       breakpoint: {
         max: 464,
-        min: 0
+        min: 0,
       },
       items: 1,
-      partialVisibilityGutter: 30
+      partialVisibilityGutter: 30,
     },
     tablet: {
       breakpoint: {
         max: 1024,
-        min: 464
+        min: 464,
       },
       items: 2,
-      partialVisibilityGutter: 30
-    }
+      partialVisibilityGutter: 30,
+    },
   };
 
   useEffect(() => {
